@@ -30,9 +30,10 @@ class CreateStudents < ActiveRecord::Migration
       t.string :phone2
       t.string :email
 
+      # TODO: Photo should save to disk
       t.string :photo_filename
       t.string :photo_content_type
-      t.binary :photo_data, :limit => 5.megabytes
+      t.binary :photo_data
 
       t.string :status
       t.string :status_description
