@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   layout :choose_layout
-  
+
   before_filter :login_required, :except => [:forgot_password, :login, :set_new_password, :reset_password]
   before_filter :only_admin_allowed, :only => [:edit, :create, :index,:edit_privilege]
 
@@ -11,7 +11,7 @@ class UserController < ApplicationController
     return 'forgotpw' if action_name == 'forgot_password'
     'application'
   end
-  
+
   def all
     @users = User.find :all
   end
@@ -40,7 +40,7 @@ class UserController < ApplicationController
   def change_password
     flash[:notice]="You do not have permission to change demo account password!"
     redirect_to :action=>"dashboard"
-    
+
     if request.post?
      @user = current_user
     if User.authenticate?(@user.username, params[:user][:old_password])
@@ -88,7 +88,7 @@ class UserController < ApplicationController
 
   def dashboard
     @user = current_user
-    @student = Student.find_by_admission_no(@user.username)
+    @student = Student.find_by_admission_no(@user.username.to_i)
   end
 
   def edit
@@ -102,7 +102,7 @@ class UserController < ApplicationController
   def forgot_password
     flash[:notice]="You do not have permission to access forgot password!"
     redirect_to :action=>"login"
-  
+
     if request.post? and params[:reset_password]
       if user = User.find_by_email(params[:reset_password][:email])
         user.reset_password_code = Digest::SHA1.hexdigest( "#{user.email}#{Time.now.to_s.split(//).sort_by {rand}.join}" )
@@ -206,7 +206,7 @@ class UserController < ApplicationController
       flash[:notice] = 'Role updated.'
       redirect_to :action => 'profile',:id => @user.username
     end
-    
+
   end
-  
+
 end
