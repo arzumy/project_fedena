@@ -1,0 +1,3 @@
+declarative_authorization --version "~>0.4.1"
+prawn --version "~>0.8.4"
+pdf-writer --version "~>1.1.8"
