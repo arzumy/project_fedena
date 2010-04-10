@@ -13,13 +13,13 @@
     <% form_for :user do |form| %>
 
     <div id="login_area">
-      <label for="username">Username</label>
+      <label for="user_username">Username</label>
       <div id="username_textbox_bg">
           <%= form.text_field :username,
                               :maxlength => 40%>
       </div>
 
-      <label for="password">Password</label>
+      <label for="user_password">Password</label>
       <div id="password_textbox_bg">
         <%= form.password_field :password %>
       </div>
@@ -30,7 +30,7 @@
       </div>
 
       <div id="submit_area">
-        <%= submit_tag "", :class => "submit" %>
+        <%= submit_tag "", :class => "submit", :id => "submit" %>
       </div>
 
 
