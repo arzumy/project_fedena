@@ -29,5 +29,5 @@ config.action_mailer.delivery_method = :test
 
 config.gem 'turn',          :version => '~> 0.7.0'
 config.gem 'shoulda',       :version => '~> 2.10.2'
-config.gem 'factory_girl',  :version => '~> 1.2.3', :lib => false
+config.gem 'factory_girl',  :version => '~> 1.2.3'
 config.gem 'rr',            :version => '~> 0.10.11'
